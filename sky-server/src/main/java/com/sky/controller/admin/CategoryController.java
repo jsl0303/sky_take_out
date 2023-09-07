@@ -48,6 +48,11 @@ public class CategoryController {
         return Result.success(pageResult);
     }
 
+    /**
+     * 修改分类
+     * @param categoryDTO
+     * @return
+     */
     @PutMapping()
     @ApiOperation("修改分类")
     public Result update(@RequestBody CategoryDTO categoryDTO){
@@ -56,4 +61,19 @@ public class CategoryController {
         return Result.success();
     }
 
+    @PostMapping("/status/{status}")
+    @ApiOperation("修改分类状态")
+    public Result startOrStop(@PathVariable Integer status,Long id){
+        log.info("修改员工状态:{},{}",status,id);
+        categoryService.startOrStop(status,id);
+        return Result.success();
+    }
+
+    @DeleteMapping
+    @ApiOperation("根据id删除分类")
+    public Result delete(Long id){
+        log.info("删除菜品id:{}",id);
+        categoryService.delete(id);
+        return Result.success();
+    }
 }
