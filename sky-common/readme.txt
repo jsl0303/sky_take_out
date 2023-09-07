@@ -1,0 +1,9 @@
+存放公共类，例如：工具类，常量类，异常类等
+constant：常量类
+context：项目上下文相关
+enumeration：枚举类
+exception：自定义异常类
+json：处理json转换
+properties：SpringBoot中的一些配置属性类
+result：结果集
+utils：工具类
