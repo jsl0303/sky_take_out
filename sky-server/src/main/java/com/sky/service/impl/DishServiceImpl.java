@@ -4,6 +4,8 @@ import com.sky.constant.StatusConstant;
 import com.sky.context.BaseContext;
 import com.sky.dto.DishDTO;
 import com.sky.entity.Dish;
+import com.sky.entity.DishFlavor;
+import com.sky.mapper.DishFlavorMapper;
 import com.sky.mapper.DishMapper;
 import com.sky.service.DishService;
 import org.springframework.beans.BeanUtils;
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * @program: sky-take-out
@@ -24,6 +27,9 @@ public class DishServiceImpl implements DishService {
     @Autowired
     private DishMapper dishMapper;
 
+    @Autowired
+    private DishFlavorMapper dishFlavorMapper;
+
     /**
      * 新增菜品
      * @param dishDTO
@@ -34,13 +40,19 @@ public class DishServiceImpl implements DishService {
 
         dish.setStatus(StatusConstant.ENABLE);
 
-        dish.setCreateTime(LocalDateTime.now());
-        dish.setCreateUser(BaseContext.getCurrentId());
+        dishMapper.insert(dish);
 
-        dish.setUpdateTime(LocalDateTime.now());
-        dish.setUpdateUser(BaseContext.getCurrentId());
+        Long dishId = dish.getId();
 
-        dishMapper.addDish(dishDTO);
+
+        List<DishFlavor> dishFlavors = dishDTO.getFlavors();
+        if (dishFlavors != null && dishFlavors.size() > 0){
+            dishFlavors.forEach(dishFlavor -> {
+                dishFlavor.setDishId(dishId);
+            });
+        }
+
+        dishFlavorMapper.insertBatch(dishFlavors);
 
 
     }

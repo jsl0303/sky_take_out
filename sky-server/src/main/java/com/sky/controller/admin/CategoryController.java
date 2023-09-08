@@ -12,6 +12,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * @program: sky-take-out
  * @description:
@@ -75,5 +77,12 @@ public class CategoryController {
         log.info("删除菜品id:{}",id);
         categoryService.delete(id);
         return Result.success();
+    }
+
+    @GetMapping("/list")
+    @ApiOperation("根据类型查询分类")
+    public Result<List<Category>> list(Integer type){
+        List<Category> list = categoryService.list(type);
+        return Result.success(list);
     }
 }

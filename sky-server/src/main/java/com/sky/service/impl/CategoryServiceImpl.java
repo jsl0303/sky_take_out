@@ -79,4 +79,10 @@ public class CategoryServiceImpl implements CategoryService {
     public void delete(Long id) {
         categoryMapper.delete(id);
     }
+
+    @Override
+    public List<Category> list(Integer type) {
+        List<Category> list = categoryMapper.list(type);
+        return list;
+    }
 }
