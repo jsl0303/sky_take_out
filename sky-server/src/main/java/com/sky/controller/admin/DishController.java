@@ -12,6 +12,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * @program: sky-take-out
  * @description:
@@ -40,7 +42,11 @@ public class DishController {
         return Result.success();
     }
 
-
+    /**
+     * 菜品分页查询
+     * @param dishPageQueryDTO
+     * @return
+     */
     @GetMapping("/page")
     @ApiOperation("菜品分页查询")
     public Result<PageResult> page(DishPageQueryDTO dishPageQueryDTO) {
@@ -48,4 +54,31 @@ public class DishController {
         PageResult pageResult = dishService.pageQuery(dishPageQueryDTO);//后绪步骤定义
         return Result.success(pageResult);
     }
+
+    /**
+     * 批量删除菜品
+     * @param ids
+     * @return
+     */
+    @DeleteMapping()
+    @ApiOperation("批量删除菜品")
+    public Result delete(@RequestParam List<Long> ids){
+        log.info("删除菜品:{}",ids);
+        dishService.delete(ids);
+        return Result.success();
+    }
+
+    /**
+     * 根据id查询菜品
+     * @param id
+     * @return
+     */
+    @GetMapping("/{id}")
+    @ApiOperation("根据id查询菜品")
+    public Result<Dish> selectById(@PathVariable Long id){
+        log.info("根据id查询菜品:{}",id);
+        Dish dish = dishService.selectById(id);
+        return Result.success(dish);
+    }
+
 }

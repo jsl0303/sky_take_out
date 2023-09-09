@@ -5,6 +5,8 @@ import com.sky.dto.DishPageQueryDTO;
 import com.sky.entity.Dish;
 import com.sky.result.PageResult;
 
+import java.util.List;
+
 /**
  * @program: sky-take-out
  * @description:
@@ -16,4 +18,8 @@ public interface DishService {
     void addDish(DishDTO dishDTO);
 
     PageResult pageQuery(DishPageQueryDTO dishPageQueryDTO);
+
+    void delete(List<Long> ids);
+
+    Dish selectById(Long id);
 }
