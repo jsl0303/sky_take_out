@@ -13,8 +13,6 @@ import org.apache.ibatis.annotations.Select;
 
 @Mapper
 public interface SetmealMapper {
-    @Insert("insert into setmeal (category_id, name, price, status, description, image, create_time, update_time, create_user, update_user) VALUES " +
-            "(#{categoryId},#{name},#{price},#{status},#{description},#{image},#{createTime},#{updateTime},#{createUser},#{updateUser})")
     @AutoFill(value = OperationType.INSERT)
     void insert(Setmeal setmeal);
 

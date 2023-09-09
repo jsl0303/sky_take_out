@@ -43,6 +43,7 @@ public class SetmealServiceImpl implements SetmealService {
         //向套餐表插入数据
         setmealMapper.insert(setmeal);
 
+        setmeal = setmealMapper.getById(56L);
         //获取生成的套餐id
         Long setmealId = setmeal.getId();
 
