@@ -1,4 +1,5 @@
 sky:
+
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     host: localhost
@@ -11,3 +12,9 @@ sky:
     access-key-id: LTAI5tNEtbZx2ZUPnLhravFj
     access-key-secret: D94hAPKuDDJCaBrP30jTG856z8lpkI
     bucket-name: sky-take-out-pzp
+  redis:
+    host: localhost
+    port: 6379
+    password: 123456
+    database: 9
+
