@@ -9,7 +9,6 @@ spring:
     port: ${sky.redis.port}
     password: ${sky.redis.password}
     database: ${sky.redis.database}
-
   main:
     allow-circular-references: true
   datasource:
@@ -40,12 +39,23 @@ sky:
     # 设置jwt签名加密时使用的秘钥
     admin-secret-key: itcast
     # 设置jwt过期时间
-    admin-ttl: 7200000
+    admin-ttl: 21600000
     # 设置前端传递过来的令牌名称
     admin-token-name: token
+    user-secret-key: token
+    user-ttl: 21600000
+    user-token-name: authentication
   alioss:
     endpoint: ${sky.alioss.endpoint}
     access-key-id: ${sky.alioss.access-key-id}
     access-key-secret: ${sky.alioss.access-key-secret}
     bucket-name: ${sky.alioss.bucket-name}
-
+  wechat:
+    appid: ${sky.wechat.appid}
+    secret: ${sky.wechat.secret}
+    notify-url: ${sky.wechat.notify-url}
+    refund-notify-url: ${sky.wechat.refund-notify-url}
+  shop:
+    address: 河南省南阳市新野县巨龙加油站
+  baidu:
+    ak: RmLLaTzAETGL4fdPa7U97DxUVY8GUcLk

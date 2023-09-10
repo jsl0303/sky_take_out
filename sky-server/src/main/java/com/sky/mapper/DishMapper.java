@@ -36,4 +36,6 @@ public interface DishMapper {
 
 
     List<Dish> selectBycatId(Dish dish);
+
+    List<Dish> list(Dish dish);
 }

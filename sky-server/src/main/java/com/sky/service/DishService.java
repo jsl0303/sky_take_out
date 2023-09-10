@@ -33,4 +33,6 @@ public interface DishService {
     void startOrStop(Integer status, Long id);
 
     List<Dish> selectBycatId(Long catId);
+
+    List<DishVO> listWithFlavor(Dish dish);
 }
